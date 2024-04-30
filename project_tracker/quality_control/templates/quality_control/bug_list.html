@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Cписок отчетов об ошибках</h1>
+
+    <p><a href="{% url 'create_bugreport' %}">Создать новый отчёт об ошибке</a></p>
+
+    <ul>
+        {% for bug in all_bugs %}
+            <li><a href="{% url 'page_bug_detail' bug.id %}">{{ bug.title }}</a> со статусом - {{ bug.status }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

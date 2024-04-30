@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h1>Удаление проекта</h1>
+    <p>Вы уверены, что хотите удалить Доработку "{{ featurerequest.title }}"?</p>
+
+    <form action="{% url 'delete_feature' featurerequest.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Удалить">
+        <a href="{% url 'page_feature_detail' featurerequest.id %}">Отмена</a>
+    </form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <!-- Ссылка для изменения бага -->
+    <p><a href="{% url 'update_bugreport' get_bug.id %}">Изменить баг</a></p>
+
+    <!-- Ссылка удаления бага -->
+    <p><a href="{% url 'delete_bugreport' get_bug.id %}"onclick="return confirm('Вы уверены, что хотите удалить этот баг?');">Удалить баг</a></p>
+
+    <h1>Детали бага {{ get_bug.title }}</h1>
+    <p>Описание: {{ get_bug.description }}</p>
+    <p>Статус: {{ get_bug.status }}</p>
+    <p>Приоритет: {{ get_bug.priority }}</p>
+    <p>Проект, в котором найден баг: <a href = "{% url 'project_detail' get_bug.project.id %}">{{ get_bug.project.name }}</a></p>
+    <p>Задача, в которой найден баг: <a href = "{% url 'task_detail' get_bug.project.id get_bug.task.id %}">{{ get_bug.task.name }}</a></p>
+
+{% endblock %}

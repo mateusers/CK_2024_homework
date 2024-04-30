@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+    <!-- Ссылка для изменения доработки -->
+    <p><a href="{% url 'update_feature' get_feature.id %}">Изменить доработку</a></p>
+
+    <!-- Ссылка удаления дорабортки -->
+    <p><a href="{% url 'delete_feature' get_feature.id %}"onclick="return confirm('Вы уверены, что хотите удалить эту доработку?');">Удалить доработку</a></p>
+
+    <h1>Детали задачи {{ get_feature.title }}</h1>
+    <p>Описание: {{ get_feature.description }}</p>
+    <p>Статус: {{ get_feature.status }}</p>
+    <p>Приоритет: {{ get_feature.priority }}</p>
+    <p>Проект, в котором нужно сделать доработку: <a href = "{% url 'project_detail' get_feature.project.id %}">{{ get_feature.project.name }}</a></p>
+    <p>Задача, в которой нужно сделать доработку: <a href = "{% url 'task_detail' get_feature.project.id get_feature.task.id %}">{{ get_feature.task.name }}</a></p>
+
+{% endblock %}
